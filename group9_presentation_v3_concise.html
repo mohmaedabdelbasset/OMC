@@ -62,6 +62,8 @@ canvas{width:100%;max-width:360px;aspect-ratio:1;background:rgba(0,0,0,.25);bord
 .back{background:linear-gradient(145deg,rgba(251,191,36,.22),rgba(139,92,246,.3));transform:rotateY(180deg)}
 .face small{color:var(--c);margin-bottom:8px;font-weight:600}
 .hint{margin-top:auto;padding-top:8px;color:var(--mute);font-size:.72rem}
+.quiz-box{width:100%;height:70vh;min-height:460px;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:rgba(0,0,0,.3);box-shadow:0 12px 32px rgba(0,0,0,.35)}
+.quiz-box iframe{width:100%;height:100%;border:0;display:block}
 nav{display:flex;align-items:center;justify-content:center;gap:16px;padding:12px 16px;flex-wrap:wrap}
 button.nv{font:600 .9rem 'Poppins',sans-serif;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:99px;padding:10px 22px;cursor:pointer;transition:background .2s}
 button.nv:hover:not(:disabled){background:rgba(139,92,246,.45)}
@@ -198,7 +200,7 @@ g = 2 :  2³ = 1      ✗                → non primitif</code>
 </div></div></section>
 
 <!-- 8. CYBERSECURITY IN PRACTICE -->
-<section class="slide" data-id="cyber" data-prev="Previous / Précédent" data-next="Next / Suivant"><div class="wrap">
+<section class="slide" data-id="cyber" data-prev="Previous / Précédent" data-next="Quiz · AhaSlides"><div class="wrap">
 <span class="tag">Cybersecurity in practice · Cybersécurité en pratique</span>
 <h2>Why we study this</h2>
 <div class="bil">
@@ -211,6 +213,19 @@ g = 2 :  2³ = 1      ✗                → non primitif</code>
 <p><b>2. Des paramètres faibles cassent de vrais systèmes.</b> En 2015, l’attaque Logjam a montré qu’un groupe Diffie–Hellman de 512 bits pouvait être cassé en pratique, en forçant les connexions HTTPS vers ces groupes faibles.</p>
 <p><b>3. Ce que nous avons vérifié :</b> l’irréductibilité construit le corps, et un générateur primitif évite des clés confinées à un petit sous-groupe.</p></div>
 </div></div></section>
+
+<!-- 9. INTERACTIVE QUIZ -->
+<section class="slide" data-id="quiz" data-prev="Previous / Précédent" data-next="End"><div class="wrap">
+<span class="tag">Interactive Quiz · Quiz Interactif</span>
+<h2>Live Quiz – Scan QR Code to Join</h2>
+<div class="quiz-box rv" style="--i:0">
+  <iframe 
+    src="https://presenter.ahaslides.com/share/1795441207958-cpzs8int4z/present" 
+    allow="fullscreen; autoplay; clipboard-write" 
+    allowfullscreen>
+  </iframe>
+</div>
+</div></section>
 
 </div>
 <nav>
