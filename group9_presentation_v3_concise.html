@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Group 9 – Abstract Algebra and Software Applications</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#eef0ff;--mute:#a9b0d6;--v:#8b5cf6;--c:#22d3ee;--a:#fbbf24;--card:rgba(255,255,255,.07);--line:rgba(255,255,255,.16);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{font-family:'Poppins',system-ui,sans-serif;color:var(--ink);background:linear-gradient(125deg,#0b1026,#1b1147,#0e3a4f,#2a1048);background-size:300% 300%;animation:bg 20s ease infinite;overflow:hidden}
+@keyframes bg{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
+#app{height:100%;display:flex;flex-direction:column}
+.stage{flex:1;position:relative;min-height:0}
+.slide{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;padding:24px clamp(14px,5vw,60px) 40px;opacity:0;visibility:hidden;transform:translateY(28px);transition:opacity .6s,transform .6s,visibility .6s}
+.slide.on{opacity:1;visibility:visible;transform:none}
+.wrap{max-width:960px;margin:0 auto;min-width:0}
+h1{font-size:clamp(1.9rem,5vw,3.2rem);font-weight:700;line-height:1.15;background:linear-gradient(90deg,var(--c),var(--v),var(--a));-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-size:clamp(1.4rem,3.4vw,2rem);font-weight:600;margin-bottom:14px;line-height:1.25}
+.tag{display:inline-block;font-size:.75rem;padding:3px 12px;border-radius:99px;border:1px solid var(--line);color:var(--c);margin-bottom:12px}
+.sub{color:var(--mute);font-weight:300;margin:8px 0 18px}
+.people{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.person{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}
+.person b{font-size:1.15rem;display:block;margin-bottom:6px}
+.person p{color:var(--mute);font-size:.92rem;line-height:1.6}
+.cols{display:grid;grid-template-columns:1.2fr 1fr;gap:26px;align-items:start}
+@media(max-width:760px){.cols{grid-template-columns:1fr}}
+.pt{background:var(--card);border-left:3px solid var(--v);border-radius:12px;padding:12px 15px;margin:10px 0;font-size:.95rem;line-height:1.55}
+.pt b{color:var(--c)}
+.acc{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:10px 0;overflow:hidden;transition:border-color .35s,background .35s}
+.acc.open{border-color:var(--c);background:rgba(255,255,255,.1)}
+.acc-h{all:unset;display:block;width:100%;box-sizing:border-box;padding:12px 15px;cursor:pointer;font-size:.95rem;line-height:1.5}
+.acc-h b{color:var(--c)}
+.acc-h::after{content:"+ " attr(data-more);display:block;margin-top:3px;font-size:.72rem;color:var(--mute)}
+.acc.open .acc-h::after{content:"− " attr(data-less);color:var(--a)}
+.acc-h:focus-visible{outline:2px solid var(--c);outline-offset:-2px}
+.acc-b{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.2,.8,.2,1)}
+.acc.open .acc-b{grid-template-rows:1fr}
+.acc-b>div{overflow:hidden;min-height:0}
+.in{padding:0 15px 14px;font-size:.92rem;line-height:1.6;overflow-wrap:anywhere}
+.in p{margin:6px 0}
+.c{display:block;font-family:'Courier New',monospace;font-size:.85rem;line-height:1.55;background:rgba(0,0,0,.35);border:1px solid var(--line);border-radius:10px;padding:9px 12px;margin:8px 0;white-space:pre;overflow-x:auto;color:#c4f1f9}
+.m{font-family:'Times New Roman',serif;font-style:italic;color:var(--a)}
+.rv{opacity:0}
+.on .rv{animation:up .55s forwards;animation-delay:calc(var(--i)*.15s + .15s)}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.cvbox{text-align:center}
+canvas{width:100%;max-width:360px;aspect-ratio:1;background:rgba(0,0,0,.25);border:1px solid var(--line);border-radius:50%}
+.cap{color:var(--mute);font-size:.82rem;margin-top:8px}
+.bil{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:760px){.bil{grid-template-columns:1fr}}
+.bil>div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+.bil h3{font-size:.95rem;color:var(--c);margin-bottom:8px}
+.bil p{font-size:.92rem;line-height:1.6;margin-top:6px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;perspective:1200px}
+.card{height:260px;position:relative;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.2,.8,.2,1);cursor:pointer;outline-offset:4px}
+.card.flip{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:18px;padding:18px;border:1px solid var(--line);overflow:auto;font-size:.92rem;line-height:1.55;display:flex;flex-direction:column;justify-content:center}
+.front{background:linear-gradient(145deg,rgba(139,92,246,.35),rgba(34,211,238,.18))}
+.back{background:linear-gradient(145deg,rgba(251,191,36,.22),rgba(139,92,246,.3));transform:rotateY(180deg)}
+.face small{color:var(--c);margin-bottom:8px;font-weight:600}
+.hint{margin-top:auto;padding-top:8px;color:var(--mute);font-size:.72rem}
+nav{display:flex;align-items:center;justify-content:center;gap:16px;padding:12px 16px;flex-wrap:wrap}
+button.nv{font:600 .9rem 'Poppins',sans-serif;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:99px;padding:10px 22px;cursor:pointer;transition:background .2s}
+button.nv:hover:not(:disabled){background:rgba(139,92,246,.45)}
+button.nv:disabled{opacity:.35;cursor:default}
+button:focus-visible,.card:focus-visible{outline:2px solid var(--c)}
+.dots{display:flex;gap:8px}.dot{width:9px;height:9px;border-radius:50%;background:var(--line);transition:.3s}.dot.on{background:var(--c);transform:scale(1.35)}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important;transition-duration:.01s!important}}
+</style>
+</head>
+<body>
+<div id="app">
+<div class="stage">
+
+<!-- 1. WELCOME -->
+<section class="slide on" data-id="welcome" data-prev="Previous" data-next="Next"><div class="wrap">
+<span class="tag">Group 9</span>
+<h1>Abstract Algebra and Software Applications</h1>
+<p class="sub">Irreducible polynomials and primitive elements, implemented in Python.</p>
+<div class="people">
+<div class="person"><b>Nehari Yahia</b><p class="m" style="font-size:.8rem">English</p><p>Irreducibility of polynomials over ℤ[x] and ℤ<sub>p</sub>[x].</p></div>
+<div class="person"><b>Chaib Mohamed Abdelbasset</b><p class="m" style="font-size:.8rem">Français</p><p>Éléments primitifs de 𝔽<sub>q</sub>*.</p></div>
+</div></div></section>
+
+<!-- 2. NEHARI A -->
+<section class="slide" data-id="nehari1" data-prev="Previous" data-next="Next"><div class="wrap">
+<span class="tag">Nehari Yahia · English</span>
+<h2>Irreducibility</h2>
+<div class="pt rv" style="--i:0"><b>Definition.</b> A polynomial f of degree ≥ 1 is <i>irreducible</i> if it cannot be written as a product of two polynomials of smaller degree.</div>
+
+<div class="acc rv" style="--i:1"><button class="acc-h" data-more="Show example" data-less="Hide"><b>Gauss’s Lemma</b> – one example</button>
+<div class="acc-b"><div><div class="in">
+<p>The <i>content</i> of a polynomial is the gcd of its coefficients. If the content is 1, the polynomial is <i>primitive</i>. For a primitive polynomial, irreducible over ℤ means irreducible over ℚ.</p>
+<code class="c">6x² + 5x + 1 = (2x + 1)(3x + 1)
+content = gcd(6, 5, 1) = 1  → primitive
+It factors over ℤ, so it is reducible over ℚ too.</code>
+</div></div></div></div>
+
+<div class="acc rv" style="--i:2"><button class="acc-h" data-more="Show verification" data-less="Hide"><b>Eisenstein’s Criterion</b> – f(x) = x⁵ + 2x + 2, p = 2</button>
+<div class="acc-b"><div><div class="in">
+<p>If a prime p satisfies (1) p ∤ leading coefficient, (2) p divides all other coefficients, and (3) p² ∤ constant term, then f is irreducible.</p>
+<code class="c">(1)  2 ∤ 1                 ✓
+(2)  2 | 0, 0, 0, 2, 2     ✓
+(3)  4 ∤ 2                 ✓
+⇒ f is irreducible</code>
+</div></div></div></div>
+</div></section>
+
+<!-- 3. NEHARI B -->
+<section class="slide" data-id="nehari2" data-prev="Previous" data-next="Next"><div class="wrap">
+<span class="tag">Nehari Yahia · English</span>
+<h2>Rabin’s Test over 𝔽<sub>p</sub></h2>
+<div class="pt rv" style="--i:0"><b>Conditions.</b> A polynomial f of degree n over 𝔽<sub>p</sub> is irreducible if and only if:<br>
+(1) x<sup>pⁿ</sup> ≡ x (mod f), and<br>
+(2) gcd(x<sup>p<sup>n/q</sup></sup> − x, f) = 1 for every prime q dividing n.</div>
+
+<div class="acc rv" style="--i:1"><button class="acc-h" data-more="Show example" data-less="Hide"><b>Example</b> – x² + 1 over 𝔽₃</button>
+<div class="acc-b"><div><div class="in">
+<code class="c">n = 2, the only prime q | n is q = 2
+(1) x⁹ ≡ x (mod f)           ✓   since x² ≡ −1
+(2) x³ − x ≡ x (mod f)
+    gcd(x, x² + 1) = 1       ✓
+⇒ x² + 1 is irreducible over 𝔽₃</code>
+</div></div></div></div>
+
+<div class="pt rv" style="--i:2"><b>Why Rabin?</b> Eisenstein can be silent (x² + 1 has a₀ = 1). Rabin always decides over 𝔽<sub>p</sub>.</div>
+<div class="pt rv" style="--i:3"><b>Python:</b> <code>check_irreducible_Z</code> · <code>check_irreducible_Zp</code> · <code>rabin_test</code>, all using SymPy and modular exponentiation.</div>
+</div></section>
+
+<!-- 4. CHAIB A -->
+<section class="slide" data-id="chaib" data-prev="Précédent" data-next="Suivant"><div class="wrap">
+<span class="tag">Chaib Mohamed Abdelbasset · Français</span>
+<h2>Éléments primitifs de 𝔽<sub>q</sub>*</h2>
+<div class="cols">
+<div>
+<div class="pt rv" style="--i:0"><b>Définition.</b> g ∈ 𝔽<sub>q</sub>* est primitif si son ordre vaut q − 1, c’est-à-dire si ses puissances engendrent tout 𝔽<sub>q</sub>*.</div>
+<div class="acc rv" style="--i:1"><button class="acc-h" data-more="Voir l’exemple" data-less="Réduire"><b>Exemple</b> dans 𝔽₇*</button>
+<div class="acc-b"><div><div class="in">
+<code class="c">g = 3 :  3, 2, 6, 4, 5, 1   → ordre 6  ✓ primitif
+g = 2 :  2, 4, 1         → ordre 3  ✗ non primitif</code>
+</div></div></div></div>
+</div>
+<div class="cvbox rv" style="--i:2"><canvas id="cv" width="400" height="400" aria-label="Cycle engendré par 3 dans F7"></canvas>
+<p class="cap">Cycle engendré par g = 3 dans 𝔽₇*</p></div>
+</div></div></section>
+
+<!-- 5. CHAIB B -->
+<section class="slide" data-id="chaib2" data-prev="Précédent" data-next="Suivant"><div class="wrap">
+<span class="tag">Chaib Mohamed Abdelbasset · Français</span>
+<h2>Nombre et test d’un élément primitif</h2>
+
+<div class="acc rv" style="--i:0"><button class="acc-h" data-more="Voir le théorème" data-less="Réduire"><b>Théorème</b> – nombre d’éléments primitifs : φ(q − 1)</button>
+<div class="acc-b"><div><div class="in">
+<p>𝔽<sub>q</sub>* est cyclique, donc il existe exactement φ(q − 1) éléments primitifs.</p>
+<code class="c">q = 7 :  φ(6) = 6 · ½ · ⅔ = 2
+Éléments primitifs : {3, 5}</code>
+</div></div></div></div>
+
+<div class="acc rv" style="--i:1"><button class="acc-h" data-more="Voir l’algorithme" data-less="Réduire"><b>Test optimisé</b> – factoriser q − 1</button>
+<div class="acc-b"><div><div class="in">
+<p>g est primitif ssi g<sup>(q−1)/r</sup> ≠ 1 pour chaque facteur premier r de q − 1. Il suffit donc de quelques exponentiations, sans calculer toutes les puissances.</p>
+<code class="c">q = 7, q − 1 = 6, r ∈ {2, 3}
+g = 3 :  3³ = 6 ≠ 1 ✓,  3² = 2 ≠ 1 ✓  → primitif
+g = 2 :  2³ = 1      ✗                → non primitif</code>
+<p><b>Coût :</b> O(p · ω(p−1) · log p), contre O(p²) pour la méthode naïve.</p>
+</div></div></div></div>
+</div></section>
+
+<!-- 6. CYBERSECURITY -->
+<section class="slide" data-id="security" data-prev="Previous / Précédent" data-next="Next / Suivant"><div class="wrap">
+<span class="tag">Cybersecurity relevance · Pertinence pour la cybersécurité</span>
+<h2>Why this matters</h2>
+<div class="bil">
+<div><h3>English</h3>
+<p><b>AES:</b> the modulus must be irreducible, otherwise bytes have no inverse.</p>
+<p><b>Diffie–Hellman:</b> the generator must be primitive and p large.</p></div>
+<div><h3>Français</h3>
+<p><b>Pohlig–Hellman :</b> si p − 1 n’a que de petits facteurs, le logarithme discret se casse vite. D’où p = 2q + 1.</p>
+<p><b>Générateur faible :</b> un ordre petit réduit l’espace des clés.</p></div>
+</div></div></section>
+
+<!-- 7. Q&A -->
+<section class="slide" data-id="qa" data-prev="Previous" data-next="Next"><div class="wrap">
+<span class="tag">Virtual examiner · Examinateur virtuel</span>
+<h2>Questions</h2>
+<div class="cards">
+<div class="card" tabindex="0" role="button"><div class="face front"><small>English</small>If f is irreducible mod p, is it irreducible over ℤ? Is the converse true?<span class="hint">Click to flip</span></div>
+<div class="face back"><small>Answer</small>The first part holds (when p does not divide the leading coefficient). The converse is false: x⁴ + 1 is irreducible over ℤ but reducible mod every prime.</div></div>
+
+<div class="card" tabindex="0" role="button"><div class="face front"><small>Français</small>Quelle condition caractérise un élément primitif de 𝔽<sub>p</sub>* ?<span class="hint">Cliquez pour retourner</span></div>
+<div class="face back"><small>Réponse</small>ord(g) = p − 1, soit g<sup>(p−1)/r</sup> ≠ 1 pour tout premier r | p − 1.</div></div>
+
+<div class="card" tabindex="0" role="button"><div class="face front"><small>Français</small>Quelle est la complexité de la recherche ?<span class="hint">Cliquez pour retourner</span></div>
+<div class="face back"><small>Réponse</small>Naïve : O(p²). Avec la factorisation de p − 1 : O(p · ω(p−1) · log p).</div></div>
+</div></div></section>
+
+<!-- 8. CYBERSECURITY IN PRACTICE -->
+<section class="slide" data-id="cyber" data-prev="Previous / Précédent" data-next="Next / Suivant"><div class="wrap">
+<span class="tag">Cybersecurity in practice · Cybersécurité en pratique</span>
+<h2>Why we study this</h2>
+<div class="bil">
+<div><h3>English</h3>
+<p><b>1. Modern cryptography is algebra.</b> AES works in a finite field, and Diffie–Hellman and ElGamal rely on group parameters chosen correctly.</p>
+<p><b>2. Weak parameters break real systems.</b> In 2015, the Logjam attack showed that 512-bit Diffie–Hellman groups could be broken in practice, forcing HTTPS connections onto those weak groups.</p>
+<p><b>3. What we verified here:</b> irreducibility builds the field, and a primitive generator avoids keys confined to a small subgroup.</p></div>
+<div><h3>Français</h3>
+<p><b>1. La cryptographie moderne repose sur l’algèbre.</b> AES travaille dans un corps fini, et Diffie–Hellman et ElGamal reposent sur des paramètres de groupe bien choisis.</p>
+<p><b>2. Des paramètres faibles cassent de vrais systèmes.</b> En 2015, l’attaque Logjam a montré qu’un groupe Diffie–Hellman de 512 bits pouvait être cassé en pratique, en forçant les connexions HTTPS vers ces groupes faibles.</p>
+<p><b>3. Ce que nous avons vérifié :</b> l’irréductibilité construit le corps, et un générateur primitif évite des clés confinées à un petit sous-groupe.</p></div>
+</div></div></section>
+
+</div>
+<nav>
+<button class="nv" id="prev">‹ Previous</button>
+<div class="dots" id="dots"></div>
+<button class="nv" id="next">Next ›</button>
+</nav>
+</div>
+
+<script>
+let cur=0;
+const slides=[...document.querySelectorAll('.slide')];
+const dots=document.getElementById('dots'),prev=document.getElementById('prev'),next=document.getElementById('next');
+slides.forEach(()=>{const d=document.createElement('span');d.className='dot';dots.appendChild(d)});
+function go(n){
+  cur=Math.max(0,Math.min(slides.length-1,n));
+  slides.forEach((s,i)=>{s.classList.toggle('on',i===cur);if(i===cur)s.scrollTop=0});
+  [...dots.children].forEach((d,i)=>d.classList.toggle('on',i===cur));
+  prev.disabled=cur===0;next.disabled=cur===slides.length-1;
+  prev.textContent='‹ '+slides[cur].dataset.prev;
+  next.textContent=slides[cur].dataset.next+' ›';
+  if(slides[cur].dataset.id==='chaib'&&window.__reset)window.__reset();
+}
+prev.onclick=()=>go(cur-1);next.onclick=()=>go(cur+1);
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1)});
+
+/* Accordions */
+document.addEventListener('click',e=>{
+  const h=e.target.closest('.acc-h');if(!h)return;
+  const a=h.parentElement;a.classList.toggle('open');h.setAttribute('aria-expanded',a.classList.contains('open'));
+});
+
+/* Flashcards */
+document.querySelectorAll('.card').forEach(c=>{
+  c.onclick=()=>c.classList.toggle('flip');
+  c.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();c.classList.toggle('flip')}};
+});
+
+/* Canvas: cyclic group generated by g = 3 in F7* */
+(()=>{
+  const cv=document.getElementById('cv'),x=cv.getContext('2d'),C=200,R=145,P=7,G=3;
+  const seq=[1];for(let i=1;i<=6;i++)seq.push(seq[i-1]*G%P);
+  const pos=e=>{const a=(e-1)/6*Math.PI*2-Math.PI/2;return[C+R*Math.cos(a),C+R*Math.sin(a)]};
+  const sup='⁰¹²³⁴⁵⁶';
+  let s=0,t=0,hold=0,last=performance.now();
+  window.__reset=()=>{s=0;t=0;hold=0};
+  function draw(){
+    x.clearRect(0,0,400,400);
+    const vis=s+(s<6&&t>.9?1:0);
+    for(let e=1;e<=6;e++){const[px,py]=pos(e);x.beginPath();x.arc(px,py,19,0,7);x.strokeStyle='rgba(255,255,255,.2)';x.lineWidth=1.5;x.stroke();}
+    x.save();x.shadowColor='#22d3ee';x.shadowBlur=14;x.strokeStyle='#22d3ee';x.lineWidth=3;x.lineCap='round';
+    for(let i=0;i<Math.min(s+1,6);i++){
+      const[a,b]=pos(seq[i]),[c,d]=pos(seq[i+1]),f=i<s?1:t;
+      x.beginPath();x.moveTo(a,b);x.lineTo(a+(c-a)*f,b+(d-b)*f);x.stroke();
+    }
+    x.restore();
+    for(let i=0;i<=vis&&i<6;i++){
+      const[px,py]=pos(seq[i]);
+      x.save();x.shadowColor=i===0?'#fbbf24':'#8b5cf6';x.shadowBlur=18;
+      x.beginPath();x.arc(px,py,19,0,7);x.fillStyle=i===0?'#fbbf24':'#8b5cf6';x.fill();x.restore();
+      x.fillStyle=i===0?'#1b1147':'#fff';x.font='600 16px Poppins,sans-serif';x.textAlign='center';x.textBaseline='middle';x.fillText(seq[i],px,py+1);
+    }
+    for(let e=1;e<=6;e++){if(!seq.slice(0,Math.min(vis+1,6)).includes(e)){const[px,py]=pos(e);x.fillStyle='rgba(255,255,255,.4)';x.font='600 16px Poppins,sans-serif';x.textAlign='center';x.textBaseline='middle';x.fillText(e,px,py+1)}}
+    x.fillStyle='#eef0ff';x.textAlign='center';x.textBaseline='middle';
+    x.font='italic 26px "Times New Roman",serif';
+    x.fillText('3'+sup[vis]+' ≡ '+seq[vis]+' (mod 7)',C,C-8);
+    x.font='300 13px Poppins,sans-serif';x.fillStyle='#a9b0d6';
+    x.fillText(vis===6?'retour à 1 : ordre 6 = q − 1':'étape '+vis+' sur 6',C,C+22);
+  }
+  function frame(now){
+    const dt=Math.min(now-last,100);last=now;
+    if(slides[cur].dataset.id==='chaib'){
+      if(hold>0){hold-=dt;if(hold<=0){s=0;t=0}}
+      else{t+=dt/850;if(t>=1){t=0;s++;if(s>=6){s=6;hold=2600}}}
+      draw();
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+
+go(0);
+</script>
+</body>
+</html>
