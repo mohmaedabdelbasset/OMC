@@ -14,62 +14,50 @@ body{font-family:'Poppins',system-ui,sans-serif;color:var(--ink);background:line
 @keyframes bg{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
 #app{height:100%;display:flex;flex-direction:column}
 .stage{flex:1;position:relative;min-height:0}
-.slide{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;padding:22px clamp(14px,5vw,60px) 40px;opacity:0;visibility:hidden;transform:translateY(28px);transition:opacity .6s,transform .6s,visibility .6s}
+.slide{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;padding:24px clamp(14px,5vw,60px) 40px;opacity:0;visibility:hidden;transform:translateY(28px);transition:opacity .6s,transform .6s,visibility .6s}
 .slide.on{opacity:1;visibility:visible;transform:none}
-.wrap{max-width:980px;margin:0 auto;min-width:0}
-h1{font-size:clamp(1.8rem,5vw,3.2rem);font-weight:700;line-height:1.15;background:linear-gradient(90deg,var(--c),var(--v),var(--a));-webkit-background-clip:text;background-clip:text;color:transparent}
-h2{font-size:clamp(1.35rem,3.4vw,2rem);font-weight:600;margin-bottom:6px;line-height:1.25}
-.sub{color:var(--mute);margin:8px 0 18px;font-weight:300}
+.wrap{max-width:960px;margin:0 auto;min-width:0}
+h1{font-size:clamp(1.9rem,5vw,3.2rem);font-weight:700;line-height:1.15;background:linear-gradient(90deg,var(--c),var(--v),var(--a));-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-size:clamp(1.4rem,3.4vw,2rem);font-weight:600;margin-bottom:14px;line-height:1.25}
 .tag{display:inline-block;font-size:.75rem;padding:3px 12px;border-radius:99px;border:1px solid var(--line);color:var(--c);margin-bottom:12px}
+.sub{color:var(--mute);font-weight:300;margin:8px 0 18px}
 .people{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
 .person{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}
 .person b{font-size:1.15rem;display:block;margin-bottom:6px}
 .person p{color:var(--mute);font-size:.92rem;line-height:1.6}
-.cols{display:grid;grid-template-columns:1.25fr 1fr;gap:26px;align-items:start}
+.cols{display:grid;grid-template-columns:1.2fr 1fr;gap:26px;align-items:start}
 @media(max-width:760px){.cols{grid-template-columns:1fr}}
-.pt{background:var(--card);border-left:3px solid var(--v);border-radius:12px;padding:11px 14px;margin:9px 0;font-size:.92rem;line-height:1.55}
-.acc{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:9px 0;overflow:hidden;transition:border-color .35s,background .35s,box-shadow .35s}
-.acc.open{border-color:var(--c);background:rgba(255,255,255,.1);box-shadow:0 0 22px rgba(34,211,238,.12)}
-.acc-h{all:unset;display:block;width:100%;box-sizing:border-box;padding:12px 15px;cursor:pointer;font-size:.93rem;line-height:1.5}
+.pt{background:var(--card);border-left:3px solid var(--v);border-radius:12px;padding:12px 15px;margin:10px 0;font-size:.95rem;line-height:1.55}
+.pt b{color:var(--c)}
+.acc{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:10px 0;overflow:hidden;transition:border-color .35s,background .35s}
+.acc.open{border-color:var(--c);background:rgba(255,255,255,.1)}
+.acc-h{all:unset;display:block;width:100%;box-sizing:border-box;padding:12px 15px;cursor:pointer;font-size:.95rem;line-height:1.5}
 .acc-h b{color:var(--c)}
 .acc-h::after{content:"+ " attr(data-more);display:block;margin-top:3px;font-size:.72rem;color:var(--mute)}
 .acc.open .acc-h::after{content:"− " attr(data-less);color:var(--a)}
-.acc-h:hover{background:rgba(255,255,255,.04)}
 .acc-h:focus-visible{outline:2px solid var(--c);outline-offset:-2px}
 .acc-b{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.2,.8,.2,1)}
 .acc.open .acc-b{grid-template-rows:1fr}
 .acc-b>div{overflow:hidden;min-height:0}
-.in{padding:0 15px 15px;font-size:.88rem;line-height:1.6;overflow-wrap:anywhere}
-.in p{margin:8px 0}
-.in .lb{color:var(--c);font-weight:600;margin-top:10px;display:block}
-.c{display:block;font-family:'Courier New',monospace;font-size:.8rem;line-height:1.55;background:rgba(0,0,0,.35);border:1px solid var(--line);border-radius:10px;padding:9px 11px;margin:6px 0;white-space:pre;overflow-x:auto;color:#c4f1f9}
-.ok{color:#86efac}.bad{color:#fca5a5}
-table.t{width:100%;border-collapse:collapse;font-size:.8rem;margin:6px 0}
-.t th,.t td{border-bottom:1px solid var(--line);padding:5px 6px;text-align:left;vertical-align:top}
-.t th{color:var(--c);font-weight:600}
+.in{padding:0 15px 14px;font-size:.92rem;line-height:1.6;overflow-wrap:anywhere}
+.in p{margin:6px 0}
+.c{display:block;font-family:'Courier New',monospace;font-size:.85rem;line-height:1.55;background:rgba(0,0,0,.35);border:1px solid var(--line);border-radius:10px;padding:9px 12px;margin:8px 0;white-space:pre;overflow-x:auto;color:#c4f1f9}
 .m{font-family:'Times New Roman',serif;font-style:italic;color:var(--a)}
 .rv{opacity:0}
-.on .rv{animation:up .55s forwards;animation-delay:calc(var(--i)*.12s + .15s)}
+.on .rv{animation:up .55s forwards;animation-delay:calc(var(--i)*.15s + .15s)}
 @keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.cvbox{text-align:center;position:sticky;top:0}
-canvas{width:100%;max-width:380px;aspect-ratio:1;background:rgba(0,0,0,.25);border:1px solid var(--line);border-radius:50%}
+.cvbox{text-align:center}
+canvas{width:100%;max-width:360px;aspect-ratio:1;background:rgba(0,0,0,.25);border:1px solid var(--line);border-radius:50%}
 .cap{color:var(--mute);font-size:.82rem;margin-top:8px}
-.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-top:16px}
-.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px}
-.row label{font-size:.85rem;color:var(--mute)}
-input.n{width:64px;font:600 1rem 'Poppins',sans-serif;color:var(--ink);background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:10px;padding:8px;text-align:center}
-.res{font-size:.95rem;line-height:1.6;min-height:3em}
-.btn{font:600 .9rem 'Poppins',sans-serif;color:var(--ink);background:rgba(34,211,238,.25);border:1px solid var(--c);border-radius:99px;padding:9px 20px;cursor:pointer}
-.btn:hover{background:rgba(34,211,238,.45)}
 .bil{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media(max-width:760px){.bil{grid-template-columns:1fr}}
 .bil>div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
 .bil h3{font-size:.95rem;color:var(--c);margin-bottom:8px}
-.bil p{font-size:.9rem;line-height:1.6}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;perspective:1200px}
-.card{height:300px;position:relative;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.2,.8,.2,1);cursor:pointer;outline-offset:4px}
+.bil p{font-size:.92rem;line-height:1.6;margin-top:6px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;perspective:1200px}
+.card{height:260px;position:relative;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.2,.8,.2,1);cursor:pointer;outline-offset:4px}
 .card.flip{transform:rotateY(180deg)}
-.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:18px;padding:18px;border:1px solid var(--line);overflow:auto;font-size:.88rem;line-height:1.55;display:flex;flex-direction:column;justify-content:center}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:18px;padding:18px;border:1px solid var(--line);overflow:auto;font-size:.92rem;line-height:1.55;display:flex;flex-direction:column;justify-content:center}
 .front{background:linear-gradient(145deg,rgba(139,92,246,.35),rgba(34,211,238,.18))}
 .back{background:linear-gradient(145deg,rgba(251,191,36,.22),rgba(139,92,246,.3));transform:rotateY(180deg)}
 .face small{color:var(--c);margin-bottom:8px;font-weight:600}
@@ -78,7 +66,7 @@ nav{display:flex;align-items:center;justify-content:center;gap:16px;padding:12px
 button.nv{font:600 .9rem 'Poppins',sans-serif;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:99px;padding:10px 22px;cursor:pointer;transition:background .2s}
 button.nv:hover:not(:disabled){background:rgba(139,92,246,.45)}
 button.nv:disabled{opacity:.35;cursor:default}
-button:focus-visible,.card:focus-visible,input:focus-visible{outline:2px solid var(--c)}
+button:focus-visible,.card:focus-visible{outline:2px solid var(--c)}
 .dots{display:flex;gap:8px}.dot{width:9px;height:9px;border-radius:50%;background:var(--line);transition:.3s}.dot.on{background:var(--c);transform:scale(1.35)}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important;transition-duration:.01s!important}}
 </style>
@@ -91,294 +79,140 @@ button:focus-visible,.card:focus-visible,input:focus-visible{outline:2px solid v
 <section class="slide on" data-id="welcome" data-prev="Previous" data-next="Next"><div class="wrap">
 <span class="tag">Group 9</span>
 <h1>Abstract Algebra and Software Applications</h1>
-<p class="sub">Irreducible polynomials and primitive elements, from theory to Python.</p>
+<p class="sub">Irreducible polynomials and primitive elements, implemented in Python.</p>
 <div class="people">
-<div class="person"><b>Nehari Yahia</b><p class="m" style="font-size:.8rem">English</p><p>Polynomial irreducibility over ℤ[x] and ℤ<sub>p</sub>[x]: Gauss’s Lemma, Eisenstein’s criterion, Rabin’s test, and the Python implementation.</p></div>
-<div class="person"><b>Chaib Mohamed Abdelbasset</b><p class="m" style="font-size:.8rem">Français</p><p>Génération des éléments primitifs de 𝔽<sub>q</sub>* : critère, théorème de Lagrange, exemples complets.</p></div>
+<div class="person"><b>Nehari Yahia</b><p class="m" style="font-size:.8rem">English</p><p>Irreducibility of polynomials over ℤ[x] and ℤ<sub>p</sub>[x].</p></div>
+<div class="person"><b>Chaib Mohamed Abdelbasset</b><p class="m" style="font-size:.8rem">Français</p><p>Éléments primitifs de 𝔽<sub>q</sub>*.</p></div>
 </div></div></section>
 
-<!-- 2. NEHARI A (ENGLISH) -->
+<!-- 2. NEHARI A -->
 <section class="slide" data-id="nehari1" data-prev="Previous" data-next="Next"><div class="wrap">
 <span class="tag">Nehari Yahia · English</span>
-<h2>Irreducibility: Gauss, Eisenstein and Rabin</h2>
-<p class="sub">Click any card to open its full proof and worked example.</p>
+<h2>Irreducibility</h2>
+<div class="pt rv" style="--i:0"><b>Definition.</b> A polynomial f of degree ≥ 1 is <i>irreducible</i> if it cannot be written as a product of two polynomials of smaller degree.</div>
 
-<div class="pt rv" style="--i:0"><b>Goal:</b> decide whether f(x) factors into polynomials of smaller degree over ℤ[x] or ℤ<sub>p</sub>[x].</div>
-
-<div class="acc rv" style="--i:1"><button class="acc-h" data-more="Click for proof &amp; concrete example" data-less="Hide the details"><b>Gauss’s Lemma</b> – primitive vs. non-primitive</button>
+<div class="acc rv" style="--i:1"><button class="acc-h" data-more="Show example" data-less="Hide"><b>Gauss’s Lemma</b> – one example</button>
 <div class="acc-b"><div><div class="in">
-<p><b>Intuition.</b> The content of a polynomial is the gcd of its coefficients. It is <i>primitive</i> when its content is 1. Gauss’s Lemma: a primitive polynomial is irreducible over ℤ exactly when it is irreducible over ℚ.</p>
-<span class="lb">Example 1 – not primitive</span>
-<code class="c">f(x) = 4x² + 2 = 2 · (2x² + 1)
-content(f) = gcd(4, 0, 2) = 2   → NOT primitive
-The factor 2 is not a unit, so f is reducible over ℤ.</code>
-<span class="lb">Example 2 – primitive</span>
-<code class="c">g(x) = 6x² + 5x + 1
-content(g) = gcd(6, 5, 1) = 1   → primitive
-(2x + 1)(3x + 1) = 6x² + 2x + 3x + 1 = 6x² + 5x + 1
-→ reducible over ℤ and over ℚ, as the lemma predicts</code>
+<p>The <i>content</i> of a polynomial is the gcd of its coefficients. If the content is 1, the polynomial is <i>primitive</i>. For a primitive polynomial, irreducible over ℤ means irreducible over ℚ.</p>
+<code class="c">6x² + 5x + 1 = (2x + 1)(3x + 1)
+content = gcd(6, 5, 1) = 1  → primitive
+It factors over ℤ, so it is reducible over ℚ too.</code>
 </div></div></div></div>
 
-<div class="acc rv" style="--i:2"><button class="acc-h" data-more="Click for full step-by-step verification" data-less="Hide the details"><b>Eisenstein’s Criterion</b> – f(x) = x⁵ + 2x + 2, p = 2</button>
+<div class="acc rv" style="--i:2"><button class="acc-h" data-more="Show verification" data-less="Hide"><b>Eisenstein’s Criterion</b> – f(x) = x⁵ + 2x + 2, p = 2</button>
 <div class="acc-b"><div><div class="in">
-<p><b>Statement.</b> Let f = aₙxⁿ + … + a₀ ∈ ℤ[x]. If a prime p satisfies (1) p ∤ aₙ, (2) p | aᵢ for every i &lt; n, and (3) p² ∤ a₀, then f is irreducible over ℚ.</p>
-<span class="lb">Coefficients: a₅ = 1, a₄ = 0, a₃ = 0, a₂ = 0, a₁ = 2, a₀ = 2</span>
-<div class="ok" style="overflow-x:auto"><table class="t"><tr><th>Condition</th><th>Check</th><th>Result</th></tr>
-<tr><td>(1) p ∤ a₅</td><td>2 ∤ 1</td><td class="ok">✓</td></tr>
-<tr><td>(2) p | a₄</td><td>2 | 0</td><td class="ok">✓</td></tr>
-<tr><td>(2) p | a₃</td><td>2 | 0</td><td class="ok">✓</td></tr>
-<tr><td>(2) p | a₂</td><td>2 | 0</td><td class="ok">✓</td></tr>
-<tr><td>(2) p | a₁</td><td>2 | 2</td><td class="ok">✓</td></tr>
-<tr><td>(2) p | a₀</td><td>2 | 2</td><td class="ok">✓</td></tr>
-<tr><td>(3) p² ∤ a₀</td><td>4 ∤ 2</td><td class="ok">✓</td></tr></table></div>
-<p><b>Conclusion:</b> all conditions hold, so f is irreducible. Its content is gcd(1, …) = 1, so it is also irreducible over ℤ.</p>
-<span class="lb">Why it works</span>
-<p>Suppose f = g·h with deg g, deg h ≥ 1. Reducing mod 2 gives x⁵ ≡ g·h, so g ≡ xʳ and h ≡ xˢ with r, s ≥ 1. Both constant terms are then even, so 4 divides a₀ = 2, a contradiction.</p>
-</div></div></div></div>
-
-<div class="acc rv" style="--i:3"><button class="acc-h" data-more="Click for the worked example over 𝔽₃" data-less="Hide the details"><b>Rabin’s Test</b> – f(x) = x² + 1 over 𝔽₃</button>
-<div class="acc-b"><div><div class="in">
-<p><b>Statement.</b> f of degree n over 𝔽<sub>p</sub> is irreducible iff x^(pⁿ) ≡ x (mod f) and gcd(x^(p^(n/q)) − x, f) = 1 for every prime q dividing n.</p>
-<span class="lb">Setup: n = 2, p = 3. The only prime dividing n is q = 2.</span>
-<span class="lb">Step 1 – check x⁹ ≡ x (mod f), where x² ≡ −1 = 2</span>
-<code class="c">x³  = x · x² = −x
-x⁹  = (x³)³ = (−x)³ = −x³ = −(−x) = x
-⇒ x⁹ ≡ x (mod f)                     ✓</code>
-<span class="lb">Step 2 – check gcd(x^(3^(n/q)) − x, f) with n/q = 1</span>
-<code class="c">x³ − x = −x − x = −2x ≡ x (mod 3)
-gcd(x, x² + 1) = 1
-(x does not divide x² + 1, since its constant term is 1 ≠ 0)   ✓</code>
-<p><b>Conclusion:</b> both conditions hold, so x² + 1 is irreducible over 𝔽₃. Cross-check: the squares mod 3 are 0 and 1, and −1 ≡ 2 is not one of them, so there is no root.</p>
-</div></div></div></div>
-
-<div class="acc rv" style="--i:4"><button class="acc-h" data-more="Click for the counter-example x² + 1" data-less="Hide the details"><b>Limit of Eisenstein</b> – where the criterion fails</button>
-<div class="acc-b"><div><div class="in">
-<p>Eisenstein needs a prime p dividing a₀. For f(x) = x² + 1 we have a₀ = 1, and 1 has no prime divisor, so the criterion is silent for every prime.</p>
-<code class="c">Eisenstein on x² + 1:  a₀ = 1 → no prime p | 1 → criterion FAILS
-Real roots of x² + 1:  none → degree 2 with no rational root
-                       → irreducible over ℚ (and over ℤ, it is primitive)
-Rabin over 𝔽₃:         x² + 1 is irreducible mod 3 (previous card)</code>
-<p><b>Why Rabin is essential:</b> if f mod p is irreducible and p does not divide the leading coefficient, then f is irreducible over ℤ. Rabin’s test can certify irreducibility in cases where Eisenstein says nothing.</p>
-</div></div></div></div>
-
-<div class="acc rv" style="--i:5"><button class="acc-h" data-more="Click to see how the code executes these steps" data-less="Hide the details"><b>Code</b> – check_irreducible_Z, check_irreducible_Zp, rabin_test</button>
-<div class="acc-b"><div><div class="in">
-<p><b>check_irreducible_Z(f):</b> builds a SymPy polynomial over ℤ, calls <code>factor_list()</code>, and returns True only when exactly one factor appears, with multiplicity 1 and degree ≥ 1.</p>
-<p><b>check_irreducible_Zp(f, p):</b> the same test in ℤ<sub>p</sub>[x], using a polynomial with <code>modulus=p</code>.</p>
-<p><b>rabin_test(f, p):</b> stores f as a coefficient list mod p and runs two modular computations:</p>
-<code class="c">x^(p^k) mod f        → gf_pow_mod(X, p**k, f, p)
-                      square-and-multiply: about log₂(p^k) squarings
-gcd(x^(p^(n/q)) − x, f) → gf_gcd(f, h, p)   (Euclid on polynomials)</code>
-<p>For x² + 1 with p = 3: the exponent 9 = 1001₂ is processed bit by bit, so x⁹ is reached with a few squarings and multiplications by x, always reduced mod f.</p>
+<p>If a prime p satisfies (1) p ∤ leading coefficient, (2) p divides all other coefficients, and (3) p² ∤ constant term, then f is irreducible.</p>
+<code class="c">(1)  2 ∤ 1                 ✓
+(2)  2 | 0, 0, 0, 2, 2     ✓
+(3)  4 ∤ 2                 ✓
+⇒ f is irreducible</code>
 </div></div></div></div>
 </div></section>
 
-<!-- 3. NEHARI B (ENGLISH) -->
+<!-- 3. NEHARI B -->
 <section class="slide" data-id="nehari2" data-prev="Previous" data-next="Next"><div class="wrap">
 <span class="tag">Nehari Yahia · English</span>
-<h2>Try it: irreducibility checker</h2>
-<p class="sub">Enter a polynomial of degree 2 or 3 over ℤ<sub>p</sub>. It is irreducible exactly when it has no root.</p>
-<div class="panel">
-<div class="row">
-<label>f(x) =</label>
-<input class="n" id="a3" type="number" value="1" aria-label="coefficient of x cubed"><span>x³ +</span>
-<input class="n" id="a2" type="number" value="0" aria-label="coefficient of x squared"><span>x² +</span>
-<input class="n" id="a1" type="number" value="1" aria-label="coefficient of x"><span>x +</span>
-<input class="n" id="a0" type="number" value="1" aria-label="constant term">
-</div>
-<div class="row"><label>modulo prime p =</label><input class="n" id="pp" type="number" value="2" aria-label="prime p"><button class="btn" id="chk">Check</button></div>
-<div class="res" id="out" aria-live="polite"></div>
-</div>
+<h2>Rabin’s Test over 𝔽<sub>p</sub></h2>
+<div class="pt rv" style="--i:0"><b>Conditions.</b> A polynomial f of degree n over 𝔽<sub>p</sub> is irreducible if and only if:<br>
+(1) x<sup>pⁿ</sup> ≡ x (mod f), and<br>
+(2) gcd(x<sup>p<sup>n/q</sup></sup> − x, f) = 1 for every prime q dividing n.</div>
 
-<div class="acc" style="margin-top:18px"><button class="acc-h" data-more="Click for the reason and the AES example" data-less="Hide the details"><b>Why “no root” means irreducible</b>, and why AES needs an irreducible modulus</button>
+<div class="acc rv" style="--i:1"><button class="acc-h" data-more="Show example" data-less="Hide"><b>Example</b> – x² + 1 over 𝔽₃</button>
 <div class="acc-b"><div><div class="in">
-<p>In degree 2 or 3, any factorization must contain a linear factor, and a linear factor gives a root. So “no root” is equivalent to “irreducible”.</p>
-<span class="lb">Small example of why irreducibility matters</span>
-<code class="c">In ℤ₂[x] / (x² + 1):
-(x + 1)² = x² + 2x + 1 = (x² + 1) + 2x = 0    (mod x² + 1, mod 2)
-x + 1 ≠ 0, but its square is 0
-→ x + 1 is a zero divisor, so it has NO inverse
-→ the ring is not a field</code>
-<p>AES works in 𝔽₂⁸ = ℤ₂[x] / (x⁸ + x⁴ + x³ + x + 1). That modulus is irreducible, so every nonzero byte has an inverse, which the S-box needs.</p>
+<code class="c">n = 2, the only prime q | n is q = 2
+(1) x⁹ ≡ x (mod f)           ✓   since x² ≡ −1
+(2) x³ − x ≡ x (mod f)
+    gcd(x, x² + 1) = 1       ✓
+⇒ x² + 1 is irreducible over 𝔽₃</code>
 </div></div></div></div>
+
+<div class="pt rv" style="--i:2"><b>Why Rabin?</b> Eisenstein can be silent (x² + 1 has a₀ = 1). Rabin always decides over 𝔽<sub>p</sub>.</div>
+<div class="pt rv" style="--i:3"><b>Python:</b> <code>check_irreducible_Z</code> · <code>check_irreducible_Zp</code> · <code>rabin_test</code>, all using SymPy and modular exponentiation.</div>
 </div></section>
 
-<!-- 4. CHAIB A (FRENCH) -->
+<!-- 4. CHAIB A -->
 <section class="slide" data-id="chaib" data-prev="Précédent" data-next="Suivant"><div class="wrap">
 <span class="tag">Chaib Mohamed Abdelbasset · Français</span>
 <h2>Éléments primitifs de 𝔽<sub>q</sub>*</h2>
-<p class="sub">Cliquez sur une carte pour voir la démonstration et le calcul complet.</p>
 <div class="cols">
 <div>
-<div class="acc rv" style="--i:0"><button class="acc-h" data-more="Cliquez pour la démonstration pas à pas" data-less="Réduire"><b>Définition</b> – g est primitif si son ordre vaut q − 1</button>
+<div class="pt rv" style="--i:0"><b>Définition.</b> g ∈ 𝔽<sub>q</sub>* est primitif si son ordre vaut q − 1, c’est-à-dire si ses puissances engendrent tout 𝔽<sub>q</sub>*.</div>
+<div class="acc rv" style="--i:1"><button class="acc-h" data-more="Voir l’exemple" data-less="Réduire"><b>Exemple</b> dans 𝔽₇*</button>
 <div class="acc-b"><div><div class="in">
-<p>g ∈ 𝔽<sub>q</sub>* est primitif si ⟨g⟩ = 𝔽<sub>q</sub>*, c’est-à-dire si l’ordre de g est q − 1. Exemple dans 𝔽₇* (q − 1 = 6) :</p>
-<code class="c">g = 3 :  3¹=3   3²=2   3³=6   3⁴=4   3⁵=5   3⁶=1
-        → ordre 6 = q − 1  ⇒ 3 est PRIMITIF   ✓
-g = 2 :  2¹=2   2²=4   2³=1
-        → ordre 3 &lt; 6    ⇒ 2 n’est PAS primitif  ✗</code>
-</div></div></div></div>
-
-<div class="acc rv" style="--i:1"><button class="acc-h" data-more="Cliquez pour le test pas à pas" data-less="Réduire"><b>Critère</b> – g<sup>(q−1)/r</sup> ≠ 1 pour tout premier r | q − 1</button>
-<div class="acc-b"><div><div class="in">
-<p>Ici q − 1 = 6, ses diviseurs premiers sont r = 2 et r = 3.</p>
-<code class="c">g = 3 :  3^(6/2) = 3³ = 6 ≠ 1   ✓
-        3^(6/3) = 3² = 2 ≠ 1   ✓   ⇒ primitif
-g = 2 :  2^(6/2) = 2³ = 1      ✗   ⇒ non primitif
-        (un seul échec suffit)</code>
-</div></div></div></div>
-
-<div class="acc rv" style="--i:2"><button class="acc-h" data-more="Cliquez pour l’énoncé et l’exemple" data-less="Réduire"><b>Théorème de Lagrange</b> – l’ordre d’un élément divise |G|</button>
-<div class="acc-b"><div><div class="in">
-<p><b>Énoncé :</b> si G est un groupe fini, l’ordre de tout élément de G divise |G|.</p>
-<span class="lb">Application à 𝔽₇* (|G| = 6)</span>
-<code class="c">Les ordres possibles sont 1, 2, 3, 6.
-Exemple : g = 4 :  4¹=4   4²=2   4³=1
-        → ordre 3, et 3 | 6  ✓</code>
-<p><b>Pourquoi cela justifie le critère :</b> si l’ordre d de g est un diviseur propre de 6, alors d | 3 ou d | 2, donc d divise 6/2 = 3 ou 6/3 = 2. Tester r = 2 et r = 3 suffit.</p>
-</div></div></div></div>
-
-<div class="acc rv" style="--i:3"><button class="acc-h" data-more="Cliquez pour le calcul complet dans 𝔽₇" data-less="Réduire"><b>Nombre d’éléments primitifs</b> – φ(q − 1) (théorème)</button>
-<div class="acc-b"><div><div class="in">
-<p><b>Énoncé :</b> 𝔽<sub>q</sub>* étant cyclique, il existe exactement φ(q − 1) éléments primitifs.</p>
-<code class="c">φ(6) = 6 · (1 − 1/2) · (1 − 1/3) = 6 · 1/2 · 2/3 = 2
-Éléments primitifs de 𝔽₇* : {3, 5}
-
-Vérification de 5 :
-5¹=5   5²=4   5³=6   5⁴=2   5⁵=3   5⁶=1
-→ ordre 6 = q − 1  ⇒ 5 est primitif  ✓</code>
+<code class="c">g = 3 :  3, 2, 6, 4, 5, 1   → ordre 6  ✓ primitif
+g = 2 :  2, 4, 1         → ordre 3  ✗ non primitif</code>
 </div></div></div></div>
 </div>
-<div class="cvbox rv" style="--i:4"><canvas id="cv" width="400" height="400" aria-label="Animation du groupe cyclique engendré par 3 dans F7"></canvas>
+<div class="cvbox rv" style="--i:2"><canvas id="cv" width="400" height="400" aria-label="Cycle engendré par 3 dans F7"></canvas>
 <p class="cap">Cycle engendré par g = 3 dans 𝔽₇*</p></div>
 </div></div></section>
 
-<!-- 5. CHAIB B: WORKED EXAMPLE F9 (FRENCH) -->
-<section class="slide" data-id="chaibex" data-prev="Précédent" data-next="Suivant"><div class="wrap">
-<span class="tag">Chaib Mohamed Abdelbasset · Français</span>
-<h2>Exemple complet : 𝔽₉ = 𝔽₃[x] / (x² + 1)</h2>
-<p class="sub">Tout le test se vérifie à la main, avec un contre-exemple.</p>
-
-<div class="acc rv" style="--i:0"><button class="acc-h" data-more="Cliquez pour la construction et les puissances de α = x + 1" data-less="Réduire"><b>Construction</b> et calcul des puissances de α</button>
-<div class="acc-b"><div><div class="in">
-<p><b>Construction :</b> x² + 1 est irréductible sur 𝔽₃, car −1 ≡ 2 n’est pas un carré modulo 3. Donc 𝔽₉ = {a + bx : a, b ∈ 𝔽₃}, avec x² = −1 = 2.</p>
-<code class="c">α = x + 1
-α²  = x² + 2x + 1 = (x² + 1) + 2x = 2x
-α³  = α² · α = 2x(x + 1) = 2x² + 2x = 4 + 2x = 1 + 2x
-α⁴  = (α²)² = (2x)² = 4x² = x² = 2
-α⁵  = 2(x + 1) = 2x + 2
-α⁶  = (α³)² = (1 + 2x)² = 1 + 4x + 4x² = 1 + x + 2 = x
-α⁷  = x(x + 1) = x² + x = 2 + x
-α⁸  = (α⁴)² = 2² = 4 = 1</code>
-<p>Les huit valeurs α¹ … α⁸ sont toutes distinctes et non nulles, donc elles parcourent 𝔽₉*.</p>
-</div></div></div></div>
-
-<div class="acc rv" style="--i:1"><button class="acc-h" data-more="Cliquez pour le test de primitivité et le contre-exemple" data-less="Réduire"><b>Test</b> de α = x + 1, et contre-exemple 2</button>
-<div class="acc-b"><div><div class="in">
-<p>q − 1 = 8 = 2³, le seul premier à tester est r = 2, donc il suffit de calculer α^((9−1)/2) = α⁴.</p>
-<code class="c">α^4 = 2 ≠ 1   ✓   ⇒ α = x + 1 est PRIMITIF (ordre 8)
-
-Contre-exemple : 2 ∈ 𝔽₃ ⊂ 𝔽₉
-2^4 = (2²)² = 1² = 1   ✗   ⇒ 2 n’est PAS primitif
-(son ordre est 2)</code>
-<p><b>Vérification du nombre :</b> φ(8) = 4. Les éléments primitifs sont exactement les puissances impaires de α : α, α³, α⁵, α⁷ = x + 1, 1 + 2x, 2x + 2, 2 + x.</p>
-</div></div></div></div>
-</div></section>
-
-<!-- 6. CHAIB C: APPLICATIONS (FRENCH) -->
+<!-- 5. CHAIB B -->
 <section class="slide" data-id="chaib2" data-prev="Précédent" data-next="Suivant"><div class="wrap">
 <span class="tag">Chaib Mohamed Abdelbasset · Français</span>
-<h2>Pourquoi les éléments primitifs comptent en cryptographie</h2>
-<p class="sub">Cliquez pour voir les calculs.</p>
+<h2>Nombre et test d’un élément primitif</h2>
 
-<div class="pt rv" style="--i:0"><b>ElGamal :</b> le même générateur g sert au chiffrement, et l’inversion repose sur la structure de groupe.</div>
-
-<div class="acc rv" style="--i:1"><button class="acc-h" data-more="Cliquez pour l’échange Diffie–Hellman complet" data-less="Réduire"><b>Diffie–Hellman</b> – exemple avec p = 23, g = 5</button>
+<div class="acc rv" style="--i:0"><button class="acc-h" data-more="Voir le théorème" data-less="Réduire"><b>Théorème</b> – nombre d’éléments primitifs : φ(q − 1)</button>
 <div class="acc-b"><div><div class="in">
-<p><b>Paramètres publics :</b> p = 23, g = 5. Vérification de la primitivité : q − 1 = 22 = 2 · 11, donc 5² ≠ 1 et 5¹¹ ≠ 1.</p>
-<code class="c">5²  = 2     5³  = 10     5⁶ = 10² = 100 ≡ 8
-5⁵ = 20,  5¹¹ = 5⁶ · 5⁵ = 8 · 20 = 160 ≡ −1 ≠ 1   ✓   (donc g = 5 est primitif)
-5¹² ≡ −5 ≡ 18,   5¹⁵ = 5¹² · 5³ = 18 · 10 = 180 ≡ 19</code>
-<span class="lb">Échange</span>
-<code class="c">Alice : a = 6    A = 5⁶  ≡ 8     (envoyé à Bob)
-Bob   : b = 15   B = 5¹⁵ ≡ 19    (envoyé à Alice)
-
-Clé d’Alice : B⁶  = 19⁶  :  19² ≡ 16,  19³ ≡ 16·19 = 304 ≡ 5,  19⁶ ≡ 5² = 25 ≡ 2
-Clé de Bob  : A¹⁵ = 8¹⁵  :  8² ≡ 18,  8⁴ ≡ 2,  8⁸ ≡ 4
-              8¹⁵ = 8⁸ · 8⁴ · 8² · 8 ≡ 4 · 2 · 18 · 8 ≡ 2
-Clé commune = 2 ✓</code>
-<p>Un espion qui connaît p, g, A et B doit résoudre 5^a ≡ 8 (mod 23), c’est-à-dire calculer un logarithme discret. Avec p = 23 c’est facile, mais des tailles réelles le rendent infaisable.</p>
+<p>𝔽<sub>q</sub>* est cyclique, donc il existe exactement φ(q − 1) éléments primitifs.</p>
+<code class="c">q = 7 :  φ(6) = 6 · ½ · ⅔ = 2
+Éléments primitifs : {3, 5}</code>
 </div></div></div></div>
 
-<div class="acc rv" style="--i:2"><button class="acc-h" data-more="Cliquez pour le critère et l’exemple" data-less="Réduire"><b>Nombre premier sûr</b> – p = 2q + 1, avec q premier</button>
+<div class="acc rv" style="--i:1"><button class="acc-h" data-more="Voir l’algorithme" data-less="Réduire"><b>Test optimisé</b> – factoriser q − 1</button>
 <div class="acc-b"><div><div class="in">
-<p><b>Pourquoi :</b> si p − 1 = 2q, les seuls premiers qui divisent p − 1 sont 2 et q. Il suffit donc de tester g² ≠ 1 et g^q ≠ 1, au lieu de tester tous les diviseurs.</p>
-<code class="c">p = 23 = 2 · 11 + 1,  q = 11 (premier)
-g = 5 :  5² = 2 ≠ 1   ✓     5¹¹ = −1 ≠ 1   ✓   ⇒ primitif</code>
-<p><b>Lien avec la sécurité :</b> si p − 1 n’a que de petits facteurs premiers, l’attaque de Pohlig–Hellman casse le logarithme discret rapidement. Le choix d’un premier sûr l’empêche.</p>
+<p>g est primitif ssi g<sup>(q−1)/r</sup> ≠ 1 pour chaque facteur premier r de q − 1. Il suffit donc de quelques exponentiations, sans calculer toutes les puissances.</p>
+<code class="c">q = 7, q − 1 = 6, r ∈ {2, 3}
+g = 3 :  3³ = 6 ≠ 1 ✓,  3² = 2 ≠ 1 ✓  → primitif
+g = 2 :  2³ = 1      ✗                → non primitif</code>
+<p><b>Coût :</b> O(p · ω(p−1) · log p), contre O(p²) pour la méthode naïve.</p>
 </div></div></div></div>
 </div></section>
 
-<!-- 7. BRIDGE (BILINGUAL, STATIC) -->
-<section class="slide" data-id="bridge" data-prev="Previous / Précédent" data-next="Next / Suivant"><div class="wrap">
-<span class="tag">Bridge · Pont entre les deux parties</span>
-<h2>From an irreducible polynomial to a field</h2>
-<p class="sub">Irreducibility gives the field; primitive elements give its generator.</p>
-<div class="bil">
-<div><h3>English (Nehari)</h3><p>x³ + x + 1 is irreducible over ℤ<sub>2</sub>, so ℤ<sub>2</sub>[x] / (x³ + x + 1) is a field with 8 elements. Let α be the class of x.</p></div>
-<div><h3>Français (Chaib)</h3><p>Ce corps est 𝔽₈, et 𝔽₈* est cyclique d’ordre 7, premier. Chaque élément non nul différent de 1 est donc primitif.</p></div>
-</div>
-<pre style="font-family:'Courier New',monospace;font-size:.82rem;background:rgba(0,0,0,.35);border:1px solid var(--line);border-radius:12px;padding:14px;margin-top:14px;color:#c4f1f9">α³ = α + 1
-α⁴ = α² + α
-α⁵ = α² + α + 1
-α⁶ = α² + 1
-α⁷ = 1          → order 7 = 8 − 1</pre>
-</div></section>
-
-<!-- 8. CYBERSECURITY (BILINGUAL, STATIC) -->
+<!-- 6. CYBERSECURITY -->
 <section class="slide" data-id="security" data-prev="Previous / Précédent" data-next="Next / Suivant"><div class="wrap">
 <span class="tag">Cybersecurity relevance · Pertinence pour la cybersécurité</span>
-<h2>Why this matters for security</h2>
-<p class="sub">The mathematics is only as strong as its parameter choices.</p>
+<h2>Why this matters</h2>
 <div class="bil">
 <div><h3>English</h3>
-<p><b>AES and the field:</b> the S-box inverts each byte in GF(2⁸). If the modulus polynomial were reducible, nonzero bytes could multiply to zero, inverses would fail, and the cipher would break.</p>
-<p style="margin-top:10px"><b>Discrete logarithm:</b> Diffie–Hellman security rests on the difficulty of recovering a from g<sup>a</sup> mod p. Real deployments use primes of at least 2048 bits.</p></div>
+<p><b>AES:</b> the modulus must be irreducible, otherwise bytes have no inverse.</p>
+<p><b>Diffie–Hellman:</b> the generator must be primitive and p large.</p></div>
 <div><h3>Français</h3>
-<p><b>Pohlig–Hellman :</b> si p − 1 n’a que de petits facteurs premiers, le logarithme discret se casse rapidement. D’où le choix de p = 2q + 1 avec q premier.</p>
-<p style="margin-top:10px"><b>Générateur faible :</b> si g a un ordre petit, la clé est confinée à un petit sous-groupe et peut être devinée. Vérifier que g est primitif évite ce piège.</p></div>
+<p><b>Pohlig–Hellman :</b> si p − 1 n’a que de petits facteurs, le logarithme discret se casse vite. D’où p = 2q + 1.</p>
+<p><b>Générateur faible :</b> un ordre petit réduit l’espace des clés.</p></div>
 </div></div></section>
 
-<!-- 9. VIRTUAL EXAMINER -->
+<!-- 7. Q&A -->
 <section class="slide" data-id="qa" data-prev="Previous" data-next="Next"><div class="wrap">
 <span class="tag">Virtual examiner · Examinateur virtuel</span>
-<h2>Questions and answers</h2>
-<p class="sub">Click a card to flip it · Cliquez sur une carte pour la retourner.</p>
+<h2>Questions</h2>
 <div class="cards">
-<div class="card" tabindex="0" role="button"><div class="face front"><small>Card 1 · English</small>If f mod p is irreducible over ℤ<sub>p</sub> and p does not divide the leading coefficient, must f be irreducible over ℤ? Is the converse true?<span class="hint">Click to flip</span></div>
-<div class="face back"><small>Answer</small>Yes for the first part: such an f is irreducible over ℤ. The converse is false: x⁴ + 1 is irreducible over ℤ, but it is reducible modulo every prime. Eisenstein’s criterion can only prove irreducibility; if it fails, nothing is decided.</div></div>
+<div class="card" tabindex="0" role="button"><div class="face front"><small>English</small>If f is irreducible mod p, is it irreducible over ℤ? Is the converse true?<span class="hint">Click to flip</span></div>
+<div class="face back"><small>Answer</small>The first part holds (when p does not divide the leading coefficient). The converse is false: x⁴ + 1 is irreducible over ℤ but reducible mod every prime.</div></div>
 
-<div class="card" tabindex="0" role="button"><div class="face front"><small>Carte 2 · Français</small>Quelle condition caractérise un élément primitif g de 𝔽<sub>p</sub>* ?<span class="hint">Cliquez pour retourner</span></div>
-<div class="face back"><small>Réponse</small>g est primitif ssi son ordre est p − 1, c’est-à-dire ssi g<sup>(p−1)/r</sup> ≢ 1 (mod p) pour chaque diviseur premier r de p − 1. Exemple : p = 7, pour g = 3, 3² ≡ 2 et 3³ ≡ 6, donc 3 est primitif.</div></div>
+<div class="card" tabindex="0" role="button"><div class="face front"><small>Français</small>Quelle condition caractérise un élément primitif de 𝔽<sub>p</sub>* ?<span class="hint">Cliquez pour retourner</span></div>
+<div class="face back"><small>Réponse</small>ord(g) = p − 1, soit g<sup>(p−1)/r</sup> ≠ 1 pour tout premier r | p − 1.</div></div>
 
-<div class="card" tabindex="0" role="button"><div class="face front"><small>Carte 3 · Français</small>Quelle est la complexité de la recherche des racines primitives, et pourquoi factoriser p − 1 aide-t-il ?<span class="hint">Cliquez pour retourner</span></div>
-<div class="face back"><small>Réponse</small>Méthode naïve : calculer toutes les puissances de chaque candidat, soit environ O(p²) multiplications. Avec la factorisation de p − 1 : chaque candidat coûte ω(p − 1) exponentiations modulaires en O(log p) multiplications, soit environ O(p · ω(p−1) · log p) au total.</div></div>
+<div class="card" tabindex="0" role="button"><div class="face front"><small>Français</small>Quelle est la complexité de la recherche ?<span class="hint">Cliquez pour retourner</span></div>
+<div class="face back"><small>Réponse</small>Naïve : O(p²). Avec la factorisation de p − 1 : O(p · ω(p−1) · log p).</div></div>
 </div></div></section>
 
-<!-- 10. CONCLUSION -->
-<section class="slide" data-id="end" data-prev="Previous" data-next="Next"><div class="wrap">
-<span class="tag">Demo and references</span>
-<h2>Run the project</h2>
-<p class="sub">python group9_project.py   (requires: pip install sympy)</p>
-<pre style="font-family:'Courier New',monospace;font-size:.82rem;background:rgba(0,0,0,.35);border:1px solid var(--line);border-radius:12px;padding:14px;color:#c4f1f9">Irreducibility over Z[x] and Z_p[x]   (Nehari)
-Primitive roots of F_p*               (Chaib)
-Speed test: factor-based vs brute force</pre>
-<div class="bil" style="margin-top:20px">
-<div><h3>References</h3><p>R. Lidl and H. Niederreiter, <i>Finite Fields</i>, Cambridge University Press.<br>A. Menezes, P. van Oorschot and S. Vanstone, <i>Handbook of Applied Cryptography</i>.<br>D. Stinson, <i>Cryptography: Theory and Practice</i>.</p></div>
-<div><h3>Thank you · Merci</h3><p>Questions are welcome. Les questions sont les bienvenues.</p></div>
+<!-- 8. CYBERSECURITY IN PRACTICE -->
+<section class="slide" data-id="cyber" data-prev="Previous / Précédent" data-next="Next / Suivant"><div class="wrap">
+<span class="tag">Cybersecurity in practice · Cybersécurité en pratique</span>
+<h2>Why we study this</h2>
+<div class="bil">
+<div><h3>English</h3>
+<p><b>1. Modern cryptography is algebra.</b> AES works in a finite field, and Diffie–Hellman and ElGamal rely on group parameters chosen correctly.</p>
+<p><b>2. Weak parameters break real systems.</b> In 2015, the Logjam attack showed that 512-bit Diffie–Hellman groups could be broken in practice, forcing HTTPS connections onto those weak groups.</p>
+<p><b>3. What we verified here:</b> irreducibility builds the field, and a primitive generator avoids keys confined to a small subgroup.</p></div>
+<div><h3>Français</h3>
+<p><b>1. La cryptographie moderne repose sur l’algèbre.</b> AES travaille dans un corps fini, et Diffie–Hellman et ElGamal reposent sur des paramètres de groupe bien choisis.</p>
+<p><b>2. Des paramètres faibles cassent de vrais systèmes.</b> En 2015, l’attaque Logjam a montré qu’un groupe Diffie–Hellman de 512 bits pouvait être cassé en pratique, en forçant les connexions HTTPS vers ces groupes faibles.</p>
+<p><b>3. Ce que nous avons vérifié :</b> l’irréductibilité construit le corps, et un générateur primitif évite des clés confinées à un petit sous-groupe.</p></div>
 </div></div></section>
 
-<!-- 11. LIVE QUIZ (AHASLIDES) -->
+<!-- 9. LIVE QUIZ (AHASLIDES) -->
 <section class="slide" data-id="quiz" data-prev="Previous" data-next="End"><div class="wrap" style="height:100%;display:flex;flex-direction:column;">
 <span class="tag">Interactive Quiz · Quiz en direct</span>
 <h2>Test your knowledge · Testez vos connaissances</h2>
@@ -417,9 +251,9 @@ function go(n){
   if(slides[cur].dataset.id==='chaib'&&window.__reset)window.__reset();
 }
 prev.onclick=()=>go(cur-1);next.onclick=()=>go(cur+1);
-document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1)});
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1)});
 
-/* Accordion: click or Enter/Space toggles, badge text changes via CSS */
+/* Accordions */
 document.addEventListener('click',e=>{
   const h=e.target.closest('.acc-h');if(!h)return;
   const a=h.parentElement;a.classList.toggle('open');h.setAttribute('aria-expanded',a.classList.contains('open'));
@@ -430,30 +264,6 @@ document.querySelectorAll('.card').forEach(c=>{
   c.onclick=()=>c.classList.toggle('flip');
   c.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();c.classList.toggle('flip')}};
 });
-
-/* Irreducibility checker for degree 2 or 3 over Z_p */
-(()=>{
-  const $=id=>document.getElementById(id),out=$('out');
-  function evalAt(c,x,p){let v=0;for(const k of c)v=(v*x+k)%p;return v}
-  function check(){
-    const p=parseInt($('pp').value,10);
-    if(!(p>=2)){out.innerHTML='<span class="bad">p must be a prime ≥ 2.</span>';return}
-    const c=[$('a3'),$('a2'),$('a1'),$('a0')].map(i=>{const v=parseInt(i.value,10)||0;return((v%p)+p)%p});
-    const first=c.findIndex(v=>v!==0);
-    if(first<0){out.innerHTML='<span class="bad">The zero polynomial is not considered.</span>';return}
-    const deg=3-first;
-    if(deg<1){out.innerHTML='<span class="bad">A constant polynomial is not irreducible by definition.</span>';return}
-    if(deg>=4){out.innerHTML='Degree 4 or more: the root test is inconclusive. Use Rabin’s test (rabin_test in Python).';return}
-    const poly=c.slice(first),roots=[];
-    for(let x=0;x<p;x++)if(evalAt(poly,x,p)===0)roots.push(x);
-    out.innerHTML=roots.length===0
-      ?'<span class="ok">Irreducible over ℤ<sub>'+p+'</sub>: no root in ℤ<sub>'+p+'</sub>.</span>'
-      :'<span class="bad">Reducible over ℤ<sub>'+p+'</sub>: roots '+roots.join(', ')+'.</span>';
-  }
-  $('chk').onclick=check;
-  ['a3','a2','a1','a0','pp'].forEach(id=>$(id).addEventListener('keydown',e=>{if(e.key==='Enter')check()}));
-  check();
-})();
 
 /* Canvas: cyclic group generated by g = 3 in F7* */
 (()=>{
